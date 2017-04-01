@@ -1,22 +1,19 @@
-package com.kgd.epam.task1;
+package com.kgd.epam.solution.task1;
 
 public class ToSeeHowItWorks {
 
 	public static void main(String[] args) {
 
 		List<String> a = new List<>();
-		a.add("data");
+			
+		a.addBack("1");
+		a.addBack("2");
+		a.addBack("3");
+		a.addBack("4");
 		
-		a.printList();
+		a.middleInsert("32");
 		
-		
-		
-		//a.addBack("1");
-		//a.addBack("2");
-		//a.addBack("3");
-		//a.addBack("4");
-		
-		//a.middleInsert("X");
+		System.out.println(a.search("987"));
 		
 		//a.printList();
 				
@@ -25,8 +22,6 @@ public class ToSeeHowItWorks {
 		a.addBack("End");
 		a.del("23");
 		a.printList();
-		
-		
 		*/
 		
 		

@@ -1,11 +1,11 @@
-package com.kgd.epam.task1;
+package com.kgd.epam.solution.task1;
 
 public class List<T> {
-	private ListElement<T> head;
-	private ListElement<T> tail;
+	private Element<T> head;
+	private Element<T> tail;
 
 	public void addFront(T data) {
-		ListElement<T> a = new ListElement<T>();
+		Element<T> a = new Element<T>();
 		a.setData(data);
 
 		if (head == null) {
@@ -22,7 +22,7 @@ public class List<T> {
 	}
 
 	public void addBack(T data) {
-		ListElement<T> a = new ListElement<>();
+		Element<T> a = new Element<>();
 		a.setData(data);
 		if (tail == null) {
 			head = a;
@@ -35,7 +35,7 @@ public class List<T> {
 		}
 	}
 
-	public void del(T data) {
+	public void delete(T data) {
 		if (head == null) {
 			return;
 		}
@@ -52,7 +52,7 @@ public class List<T> {
 			return;
 		}
 
-		ListElement<T> t = head;
+		Element<T> t = head;
 		while (t.getNext() != null) {
 			if (t.getNext().getData().equals(data)) {
 				if (tail == t.getNext()) {
@@ -65,23 +65,28 @@ public class List<T> {
 		}
 	}
 
-	public void printList() {
-		ListElement<T> t = head;
+	public String printList() {
+		Element<T> t = head;
+		String result = "";
 		while (t != null) {
-			System.out.print(t.getData() + " ");
+			result = result.concat(t.toString() + "\n");
 			t = t.getNext();
 		}
+		return result;
 	}
 
-	public ListElement<T> search(T data) { // search by value
-		ListElement<T> t = head;
+	public int search(T data) { // search by value, return position of element
+		Element<T> t = head;
+		int position = 0;
 		while (t != null) {
+			position++;
 			if (t.getData().equals(data)) {
-				return t;
+
+				return position - 1;
 			}
 			t = t.getNext();
 		}
-		return null;
+		return -1;
 
 	}
 
@@ -92,11 +97,11 @@ public class List<T> {
 			return;
 		}
 
-		ListElement<T> a = new ListElement<>();
+		Element<T> a = new Element<>();
 		a.setData(data);
 
 		int size = 0;
-		ListElement<T> t = head;
+		Element<T> t = head;
 
 		while (t != null) {
 			size++;
@@ -111,25 +116,25 @@ public class List<T> {
 		t.setNext(a);
 
 	}
-}
 
-class ListElement<E> {
-	private ListElement<E> next;
-	private E data;
+	class Element<E> {
+		private Element<E> next;
+		private E data;
 
-	public ListElement<E> getNext() {
-		return next;
-	}
+		private Element<E> getNext() {
+			return next;
+		}
 
-	public void setNext(ListElement<E> next) {
-		this.next = next;
-	}
+		private void setNext(Element<E> next) {
+			this.next = next;
+		}
 
-	public E getData() {
-		return data;
-	}
+		private E getData() {
+			return data;
+		}
 
-	public void setData(E data) {
-		this.data = data;
+		private void setData(E data) {
+			this.data = data;
+		}
 	}
 }
